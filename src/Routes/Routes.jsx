@@ -6,6 +6,7 @@ import Register from '../pages/Register/Register';
 import Home from '../pages/Home/Home';
 import AddBlog from '../pages/AddBlog/AddBlog';
 import PrivateRoutes from './PrivateRoutes';
+import AllBlogs from '../pages/AllBlogs/AllBlogs';
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <AddBlog></AddBlog>
                 </PrivateRoutes>
+            },
+            {
+                path: "/blogs",
+                element: <AllBlogs></AllBlogs>,
+                loader: () => fetch('http://localhost:5000/blogs')
             }
         ]
     },
