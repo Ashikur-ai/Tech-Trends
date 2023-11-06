@@ -20,6 +20,8 @@ const Home = () => {
             <br />
             <Link to="/addBlog">Add Blog</Link>
             <br />
+            <Link to="/blogs">All blogs</Link>
+            <br />
             <button onClick={handleLogOut}>Logout</button>
 
         </div>

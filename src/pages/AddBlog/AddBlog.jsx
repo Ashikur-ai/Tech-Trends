@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const AddBlog = () => {
+    const { user } = useContext(AuthContext);
     const handleAddBlog = (e) => {
         e.preventDefault();
         const form = e.target;
         const url = form.url.value;
         const blogName = form.name.value;
+        const email = form.email.value;
         const category = form.category.value;
         const long_description = form.long_description.value;
         const short_description = form.short_description.value;
         const blog = {
             url,
             blogName,
+            email,
             category,
             long_description,
             short_description
         }
-        console.log(blog);
+        
 
         fetch('http://localhost:5000/addBlog', {
             method: 'POST',
@@ -45,10 +49,14 @@ const AddBlog = () => {
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blog image url</label>
                             <input type="text" name="url"  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter url" required="" />
                         </div>
+                        <div className="sm:col-span-2">
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blog Name</label>
+                            <input type="text" name="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter url" required="" />
+                        </div>
                         
                         <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blog Name</label>
-                            <input type="text" name="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Blog title" required="" />
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Author Email</label>
+                            <input type="email" name="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Author Email" required="" value={user.email} />
                         </div>
                         <div>
                             <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
