@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import toast from 'react-hot-toast';
 
 const BlogCard = ({ blog }) => {
-    const { _id, blogName, url, short_description, category } = blog;
-    console.log(blog);
+    const { _id, blogName, url, short_description, long_description, category, email } = blog;
+    const { user } = useContext(AuthContext);
+    const handleWishlist = (event) => {
+        event.preventDefault();
+        const wishItem = { blogName, url, user_email: user?.email, author_email: email, short_description, long_description, category };
+        
+        fetch('http://localhost:5000/addWishlist', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(wishItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                
+            })
+        toast.success('Added to the wishlist')
+        
+    }
     return (
 
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -16,7 +37,7 @@ const BlogCard = ({ blog }) => {
                 </a>
                 <div className='flex justify-between items-center'>
                     <div className="badge badge-primary">{category}</div>
-                    <div className='badge '>wishlist</div>
+                    <button onClick={handleWishlist}><div className='badge '>wishlist</div></button>
                 </div>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{short_description}</p>
                 

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Home = () => {
     const { LogOut } = useContext(AuthContext);
@@ -9,7 +10,8 @@ const Home = () => {
             .then()
             .then(error => {
             console.log(error);
-        })
+            })
+        toast.success('logged out successfully')
     }
     return (
         <div>
@@ -21,6 +23,8 @@ const Home = () => {
             <Link to="/addBlog">Add Blog</Link>
             <br />
             <Link to="/blogs">All blogs</Link>
+            <br />
+            <Link to="/wishlist">Wishlist</Link>
             <br />
             <button onClick={handleLogOut}>Logout</button>
 
