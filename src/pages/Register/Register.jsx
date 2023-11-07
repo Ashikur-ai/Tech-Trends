@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const { SignUp } = useContext(AuthContext);
@@ -12,7 +13,18 @@ const Register = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        if (password.length < 6) {
+            return toast.error('The password is less than 6 characters')
+        }
+        else if (!/[A-Z]/.test(password)) {
+            return toast.error("don't have a capital letter")
+        }
+        else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-=|]+/.test(password)) {
+            return toast.error("don't have a special character")
+        }
+        else if (!/[0-9]/.test(password)) {
+            return toast.error("Don't have any numeric character")
+        }
 
         SignUp(email, password)
             .then(result => {
@@ -26,6 +38,9 @@ const Register = () => {
     } 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Tech Trends | Register</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

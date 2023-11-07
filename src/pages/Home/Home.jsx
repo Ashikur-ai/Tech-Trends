@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     const { LogOut } = useContext(AuthContext);
@@ -15,6 +16,9 @@ const Home = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Tech Trends | Home</title>
+            </Helmet>
             <h1 className='text-5xl'>Tech trends</h1>
             <Link to="/login">Login</Link> 
             <br />

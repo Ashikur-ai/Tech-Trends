@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import BlogCard from './BlogCard';
+import { Helmet } from 'react-helmet-async';
 
 const AllBlogs = () => {
     const blogs = useLoaderData();
@@ -41,6 +42,9 @@ const AllBlogs = () => {
      
     return (
         <>
+            <Helmet>
+                <title>Tech Trends | All blogs</title>
+            </Helmet>
             <input type="text"
                 className='border border-lime-500'
                 placeholder='Search your blog post'

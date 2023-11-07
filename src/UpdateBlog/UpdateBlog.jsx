@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateBlog = () => {
     const blog = useLoaderData();
@@ -43,7 +44,9 @@ const UpdateBlog = () => {
     }
     return (
         <div>
-            
+            <Helmet>
+                <title>Tech Trends | Update Blog</title>
+            </Helmet>
             <section className="bg-white dark:bg-gray-900">
                 <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
                     <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a Blog post</h2>

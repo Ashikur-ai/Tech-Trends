@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import CommentCard from "./CommentCard";
+import { Helmet } from "react-helmet-async";
 
 const BlogDetail = () => {
     const { user } = useContext(AuthContext);
@@ -42,6 +43,9 @@ const BlogDetail = () => {
     }
     return (
         <div className="container mx-auto">
+            <Helmet>
+                <title>Tech Trends | Details</title>
+            </Helmet>
             <img src={url} alt="" />
             <p className="text-5xl">{blogName}</p>
             <p>{long_description}</p>

@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
-    const { SignIn } = useContext(AuthContext);
+    const { SignIn, googleSignUp } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const handleLogIn = (event) => {
@@ -16,16 +18,39 @@ const Login = () => {
         SignIn(email, password)
             .then(result => {
                 console.log(result.user);
-                navigate(location?.state ? location?.state : '/')
                 toast.success('Successfully logged in')
+                const user = { email };
+                axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            navigate(location?.state ? location?.state : '/')
+
+                        }
+                })
             })
-            .then(error => {
-            console.log(error);
+            .catch(error => {
+            toast.error(error.message)
         })
         
     }
+
+    const handleGoogle = () => {
+        googleSignUp()
+            .then(result => {
+                console.log(result.user);
+                navigate(location?.state ? location?.state : '/')
+                toast.success('Successfully logged in')
+            })
+            .catch(error => {
+            console.log(error);
+        })
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Tech Trends | Login</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -49,6 +74,7 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                     </form>
+                    <button onClick={handleGoogle} className=" btn btn-outline">Google</button>
                 </div>
             </div>
         </div>
