@@ -26,6 +26,8 @@ const Home = () => {
             <br />
             <Link to="/wishlist">Wishlist</Link>
             <br />
+            <Link to="/featured">Featured Post</Link>
+            <br />
             <button onClick={handleLogOut}>Logout</button>
 
         </div>
