@@ -1,4 +1,4 @@
-# React + Vite
+# Tech Trends
 # Live site: https://tech-trends-9b550.web.app
 5 characteristics of the project
 * User have to login/register for adding a new blog.
