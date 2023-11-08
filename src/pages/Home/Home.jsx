@@ -3,38 +3,40 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import { motion } from "framer-motion";
 
 const Home = () => {
-    const { LogOut } = useContext(AuthContext);
-    const handleLogOut = () => {
-        LogOut()
-            .then()
-            .then(error => {
-            console.log(error);
-            })
-        toast.success('logged out successfully')
-    }
+    
+    
     return (
-        <div>
+        <div className='container mx-auto'>
             <Helmet>
                 <title>Tech Trends | Home</title>
             </Helmet>
-            <h1 className='text-5xl'>Tech trends</h1>
-            <Link to="/login">Login</Link> 
-            <br />
-            <Link to="/register">Register</Link>
-            <br />
-            <Link to="/addBlog">Add Blog</Link>
-            <br />
-            <Link to="/blogs">All blogs</Link>
-            <br />
-            <Link to="/wishlist">Wishlist</Link>
-            <br />
-            <Link to="/featured">Featured Post</Link>
-            <br />
-            <button onClick={handleLogOut}>Logout</button>
+            
+            
+            {/* <motion.div animate={{ x: 100, scale: 1 }}
+            initial={{scale:0}}>
+                <div className="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                    <div className="card-body">
+                        <h2 className="card-title">Shoes!</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div className="card-actions justify-end">
+                            <button className="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </motion.div> */}
+
+            
+
+            
 
         </div>
+
+
+        
     );
 };
 

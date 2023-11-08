@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
-    const { SignUp } = useContext(AuthContext);
+    const { SignUp, googleSignUp } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const handleRegister = (event) => {
@@ -28,14 +28,26 @@ const Register = () => {
 
         SignUp(email, password)
             .then(result => {
-                console.log(result.user);
+                
                 navigate(location?.state ? location?.state : '/')
                 toast.success('Successfully registered')
             })
             .then(error => {
             console.log(error);
         })
-    } 
+    }
+    
+    const handleGoogle = () => {
+        googleSignUp()
+            .then(result => {
+                
+                navigate(location?.state ? location?.state : '/')
+                toast.success('Successfully logged in')
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
             <Helmet>
@@ -64,6 +76,7 @@ const Register = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    <button onClick={handleGoogle} className=" btn btn-outline">Google</button>
                 </div>
             </div>
         </div>
