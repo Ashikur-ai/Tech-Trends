@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 
 const UpdateBlog = () => {
     const blog = useLoaderData();
-    
+
     const { _id, url, blogName, email, category, short_description, long_description } = blog;
 
     const handleUpdateBlog = event => {
@@ -28,7 +28,7 @@ const UpdateBlog = () => {
         }
         console.log(updateBlog);
 
-        fetch(`http://localhost:5000/updateBlog/${_id}`, {
+        fetch(`https://tech-trends-server.vercel.app/updateBlog/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -38,9 +38,9 @@ const UpdateBlog = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                toast.success('Blog updated successfully')
-            }
-        })
+                    toast.success('Blog updated successfully')
+                }
+            })
     }
     return (
         <div>

@@ -26,12 +26,12 @@ const FeaturedBlogs = () => {
 
     
     return (
-        <div className='min-h-screen bg-white container mx-auto'>
+        <div className='min-h-screen bg-white'>
             <Helmet>
                 <title>Tech Trends | Featured Post</title>
             </Helmet>
-            <p className='text-center font-bold text-3xl'>Top 10 Featured Post are here:</p>
-            <div className='flex justify-center items-center'>
+            <p className='text-center font-bold text-3xl'>Top 10 Featured Post are here</p>
+            <div className='w-3/4 mx-auto'>
                 <DataTable
                     columns={columns}
                     data={sortedPosts.slice(0, 10)}

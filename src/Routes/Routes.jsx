@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/blogs')
+                loader: () => fetch('https://tech-trends-server.vercel.app/blogs')
 
             },
             {
@@ -46,19 +46,19 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes>
                     <AllBlogs></AllBlogs>
                 </PrivateRoutes>,
-                loader: () => fetch('http://localhost:5000/blogs')
+                loader: () => fetch('https://tech-trends-server.vercel.app/blogs')
             },
             {
                 path: "/blog/details/:id",
                 element: <BlogDetail></BlogDetail>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://tech-trends-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path: "update/:id",
                 element: <PrivateRoutes>
                     <UpdateBlog></UpdateBlog>
                 </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://tech-trends-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path: "/wishlist",
@@ -69,12 +69,12 @@ const router = createBrowserRouter([
             {
                 path: "/featured",
                 element: <FeaturedBlogs></FeaturedBlogs>,
-                loader: () => fetch('http://localhost:5000/blogs')
+                loader: () => fetch('https://tech-trends-server.vercel.app/blogs')
             },
             {
                 path: "/wishlist/details/:id",
                 element: <WishListDetails></WishListDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/details/${params.id}`)
+                loader: ({ params }) => fetch(`https://tech-trends-server.vercel.app/wishlist/details/${params.id}`)
             }
         ]
     },

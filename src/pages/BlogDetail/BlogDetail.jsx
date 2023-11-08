@@ -11,11 +11,11 @@ const BlogDetail = () => {
     const [comments, setComment] = useState([]);
     const { _id, url, blogName, short_description, long_description, email } = blog;
 
-    const commentUrl = `http://localhost:5000/comments?id=${_id}`;
+    const commentUrl = `https://tech-trends-server.vercel.app/comments?id=${_id}`;
     useEffect(() => {
         fetch(commentUrl)
             .then(res => res.json())
-        .then(data => setComment(data))
+            .then(data => setComment(data))
     }, [commentUrl])
 
 
@@ -27,9 +27,9 @@ const BlogDetail = () => {
         const user_name = user.displayName;
         const profile_pic = user.photoURL;
         const email = user?.email;
-        const data = {comment, blog_id, user_name, profile_pic, email}
+        const data = { comment, blog_id, user_name, profile_pic, email }
         console.log(data);
-        fetch('http://localhost:5000/addComment', {
+        fetch('https://tech-trends-server.vercel.app/addComment', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +39,7 @@ const BlogDetail = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('Comment added successfully');
-        })
+            })
     }
     return (
         <div className="">
@@ -52,8 +52,8 @@ const BlogDetail = () => {
                 <div className="hero-content text-center text-white">
                     <div className="shadow-2xl rounded-2xl">
                         <h1 className="mb-5 text-5xl font-bold">{blogName}</h1>
-                        <p className="mb-5 ">{ short_description }</p>
-                        <p className="">By: { email }</p>
+                        <p className="mb-5 ">{short_description}</p>
+                        <p className="">By: {email}</p>
                     </div>
                 </div>
             </div>

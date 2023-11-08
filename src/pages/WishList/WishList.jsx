@@ -10,19 +10,19 @@ const WishList = () => {
     const { user } = useContext(AuthContext);
     const [wishlist, setWishlist] = useState([]);
 
-    const url = `http://localhost:5000/wishlist?email=${user?.email}`;
+    const url = `https://tech-trends-server.vercel.app/wishlist?email=${user?.email}`;
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {
                 setWishlist(res.data);
-        })
+            })
         // fetch(url)
         //     .then(res => res.json())
         // .then(data => setWishlist(data))
     }, [url])
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/wishlist/${id}`, {
+        fetch(`https://tech-trends-server.vercel.app/wishlist/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -46,7 +46,7 @@ const WishList = () => {
                 {wishlist?.map(item => <WishListCard key={item._id} item={item} handleDelete={handleDelete}></WishListCard>)}
             </div>
         </>
-        
+
     );
 };
 

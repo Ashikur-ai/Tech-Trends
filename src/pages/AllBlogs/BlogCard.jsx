@@ -9,8 +9,8 @@ const BlogCard = ({ blog }) => {
     const handleWishlist = (event) => {
         event.preventDefault();
         const wishItem = { blogName, url, user_email: user?.email, author_email: email, short_description, long_description, category };
-        
-        fetch('http://localhost:5000/addWishlist', {
+
+        fetch('https://tech-trends-server.vercel.app/addWishlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -20,10 +20,10 @@ const BlogCard = ({ blog }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                
+
             })
         toast.success('Added to the wishlist')
-        
+
     }
     return (
 
@@ -40,7 +40,7 @@ const BlogCard = ({ blog }) => {
                     <button onClick={handleWishlist}><div className='badge '>wishlist</div></button>
                 </div>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{short_description}</p>
-                
+
                 <Link to={`/blog/details/${_id}`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Read more
                     <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

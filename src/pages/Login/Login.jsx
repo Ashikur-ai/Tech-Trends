@@ -20,19 +20,19 @@ const Login = () => {
                 console.log(result.user);
                 toast.success('Successfully logged in')
                 const user = { email };
-                axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+                axios.post('https://tech-trends-server.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                         if (res.data.success) {
                             navigate(location?.state ? location?.state : '/')
 
                         }
-                })
+                    })
             })
             .catch(error => {
-            toast.error(error.message)
-        })
-        
+                toast.error(error.message)
+            })
+
     }
 
     const handleGoogle = () => {
@@ -43,8 +43,8 @@ const Login = () => {
                 toast.success('Successfully logged in')
             })
             .catch(error => {
-            console.log(error);
-        })
+                console.log(error);
+            })
     }
     return (
         <div className="hero min-h-screen bg-white">
@@ -52,7 +52,7 @@ const Login = () => {
                 <title>Tech Trends | Login</title>
             </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
-                
+
                 <div className="card p-4 w-full  shadow-2xl bg-base-100">
                     <form onSubmit={handleLogIn} className="card-body">
                         <div className="form-control">
