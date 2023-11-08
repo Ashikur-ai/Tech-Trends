@@ -11,11 +11,15 @@ import BlogDetail from '../pages/BlogDetail/BlogDetail';
 import UpdateBlog from '../UpdateBlog/UpdateBlog';
 import WishList from '../pages/WishList/WishList';
 import FeaturedBlogs from '../pages/FeaturedBlogs/FeaturedBlogs';
+import WishListCard from '../pages/WishList/WishListCard';
+import WishListDetails from '../pages/WishList/WishListDetails';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -45,7 +49,7 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/blogs')
             },
             {
-                path: "blog/details/:id",
+                path: "/blog/details/:id",
                 element: <BlogDetail></BlogDetail>,
                 loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
             },
@@ -66,6 +70,11 @@ const router = createBrowserRouter([
                 path: "/featured",
                 element: <FeaturedBlogs></FeaturedBlogs>,
                 loader: () => fetch('http://localhost:5000/blogs')
+            },
+            {
+                path: "/wishlist/details/:id",
+                element: <WishListDetails></WishListDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/details/${params.id}`)
             }
         ]
     },

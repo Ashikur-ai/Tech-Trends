@@ -47,13 +47,13 @@ const Login = () => {
         })
     }
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-white">
             <Helmet>
                 <title>Tech Trends | Login</title>
             </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card p-4 w-full  shadow-2xl bg-base-100">
                     <form onSubmit={handleLogIn} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -75,6 +75,9 @@ const Login = () => {
                         </div>
                     </form>
                     <button onClick={handleGoogle} className=" btn btn-outline">Google</button>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/kXQfs3p/login.gif" alt="" />
                 </div>
             </div>
         </div>

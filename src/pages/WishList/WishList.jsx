@@ -36,12 +36,17 @@ const WishList = () => {
             })
     }
     return (
-        <div className='grid grid-cols-3 container mx-auto'>
-            <Helmet>
-                <title>Tech Trends | Wishlist</title>
-            </Helmet>
-           {wishlist?.map(item => <WishListCard key={item._id} item={item} handleDelete={handleDelete}></WishListCard>)}
-        </div>
+        <>
+            <p className='text-3xl font-bold text-center m-5'>Your Wishlist</p>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 container mx-auto p-2'>
+                <Helmet>
+                    <title>Tech Trends | Wishlist</title>
+                </Helmet>
+
+                {wishlist?.map(item => <WishListCard key={item._id} item={item} handleDelete={handleDelete}></WishListCard>)}
+            </div>
+        </>
+        
     );
 };
 

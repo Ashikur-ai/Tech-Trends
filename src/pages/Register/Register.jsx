@@ -49,13 +49,13 @@ const Register = () => {
             })
     }
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-white">
             <Helmet>
                 <title>Tech Trends | Register</title>
             </Helmet>
-            <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className="hero-content flex-col lg:flex-row">
                 
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card p-4 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -77,6 +77,9 @@ const Register = () => {
                         </div>
                     </form>
                     <button onClick={handleGoogle} className=" btn btn-outline">Google</button>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/vmTDQ5X/register.gif" alt="" />
                 </div>
             </div>
         </div>

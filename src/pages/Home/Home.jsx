@@ -22,7 +22,7 @@ const Home = () => {
             {/* banner  */}
             <div className='flex flex-col p-2 md:flex-row justify-around items-center min-h-screen '>
                 <div className='space-y-5'>
-                    <p className='font-bold text-6xl'>Hi, Welcome  <br />To Tech Trends</p>
+                    <p className='font-bold text-6xl'>Unlocking the <br /> <span className='text-blue-700'>Power of Technology</span> <br /> Your Guide to the <br /><span className='text-green-700'>Digital Frontier</span></p>
                     <p className='border-l-2 border-black p-3'>On this website we share tips and tricks, frameworks, projects, tutorials, etc <br />
                         Make sure you subscribe to get the latest updates</p>
                     <input type="text" placeholder="Enter your email here" className="input shadow-lg input-bordered w-full max-w-xs" />
@@ -107,7 +107,7 @@ const Home = () => {
                         <line y1="3.5" x2="35" y2="3.5" stroke="#2B2C34" stroke-width="2" />
                     </svg>
                 </div>
-                <div className='container mx-auto px-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
+                <div className='container mx-auto px-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                     {
                         blogs.slice(-6)?.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                     }
