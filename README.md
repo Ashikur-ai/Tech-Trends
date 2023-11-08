@@ -1,8 +1,8 @@
 # React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Live site: https://tech-trends-9b550.web.app
+5 characteristics of the project
+* User have to login/register for adding a new blog.
+* Any user can comment on any blog instead of his own.
+* The author can update his post as well.
+* User can add any blog into wishlist also delete per requirement.
+* User can register using their google account seamlessly.
